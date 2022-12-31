@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 
-import redux, { connect } from '@obsidians/redux'
+import { connect } from '@obsidians/redux'
 
 import headerActions, { Header, NavGuard } from '@obsidians/header'
 import { networkManager } from '@obsidians/network'
@@ -25,7 +25,6 @@ class HeaderWithRedux extends PureComponent {
     this.setState({ networkList: List(networkManager.networks) }, this.setNetwork)
     if (!networkManager.network) {
       networkManager.setNetwork(networkManager.networks[0], { notify: false })
-      redux.dispatch('CHANGE_NETWORK_STATUS', true)
     }
     this.navGuard = new NavGuard(this.props.history)
   }
